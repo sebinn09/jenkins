@@ -1,0 +1,13 @@
+version: '3'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-jdk11
+    restart: unless-stopped
+    hostname: jenkins
+    container_name: jenkins
+    volumes:
+      - ./jenkinsdata/data:/var/jenkins_home
+      - ./jenkinsdata/docker.sock:/var/run/docker.sock
+    ports:
+      - 8083:8080
+      - 50000:50000
